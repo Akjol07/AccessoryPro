@@ -4,9 +4,9 @@ import Image from "next/image";
 import { Dispatch, FC, SetStateAction } from "react";
 import Text from "@/shared/ui/Text/Text";
 import { cn } from "@/shared/helpers/helpers";
-import { IProduct } from "@/shared/types/types";
 import Button from "@/shared/ui/Button/Button";
 import { toast } from "react-toastify";
+import { IProduct } from "@/shared/types/types";
 
 interface Props extends IProduct {
   uiType?: "big";

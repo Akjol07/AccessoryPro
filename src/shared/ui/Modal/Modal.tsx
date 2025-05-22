@@ -5,7 +5,6 @@ import * as ReactDOM from "react-dom";
 import { FC, PropsWithChildren, useEffect, useState } from "react";
 
 import Button from "../Button/Button";
-import { ButtonUiType } from "@/shared/types/types";
 import Image from "next/image";
 import Text from "../Text/Text";
 import arrowLeftIcon from "@/shared/assets/images/icons/arrow-left-bold.svg";
@@ -25,7 +24,8 @@ interface Props {
   onBack?: () => void;
   isHandleScroll?: boolean;
   modalClassName?: string;
-  closeBtnUyType?: ButtonUiType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  closeBtnUyType?: any;
   isCloseOnClickAway?: boolean;
   isAttachedDown?: boolean;
   wrapperClassName?: string;
