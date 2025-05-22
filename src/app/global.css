@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@theme {
+  --spacing-5: 5px;
+  --spacing-10: 10px;
+  --spacing-20: 20px;
+  --spacing-30: 30px;
+  --spacing-40: 40px;
+  --spacing-50: 50px;
+  --spacing-60: 60px;
+  --spacing-70: 70px;
+  --spacing-80: 80px;
+  --spacing-90: 90px;
+  --spacing-100: 100px;
+
+  --radius-circle: 50%;
+
+  --text-16: 16px;
+  --text-18: 18px;
+  --text-24: 24px;
+
+  --font-nunito: Nunito;
+  --font-old-english: oldEnglishFont;
+
+  --color-black: #181818;
+  --color-main: #f78c00;
+  --color-main-bright: #faaf4c;
+  --color-main-dark: #f99d26;
+  --color-secondary: #442600;
+  --color-secondary-bright: #804800;
+  --color-secondary-dark: #6c3d00;
+  --color-secondary-text: #faaf4c;
+  --color-secondary-text-bright: #ffe3bf;
+  --color-secondary-text-dark: #fdc986;
+  --color-disabled: #525252;
+  --color-disabled-text: #8c8c8c;
+  --color-border: #464646;
+  --color-border-2: #2f2f2f;
+  --color-bg-secondary: #242424;
+  --color-bg-secondary-bright: #525252;
+  --color-gray: #393939;
+  --color-gray-2: #898989;
+  --color-red: #d20000;
+
+  --animate-opacity: opacity 200ms ease-in-out;
+  --animate-mob-modal: mobile-modal-open 300ms ease-in-out;
+  --animate-mob-modal-reverse: mobile-modal-open 700ms ease-in-out reverse;
+  --animate-rotation: rotation 1s linear infinite;
+
+  --breakpoint-1208: 1208px;
+  --breakpoint-slt: 1024px;
+  --breakpoint-tb: 834px;
+  --breakpoint-640: 640px;
+  --breakpoint-500: 500px;
+  --breakpoint-425: 425px;
+}
+
+@utility animate-def {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+@utility hovered {
+  @apply animate-def hover:brightness-90 active:brightness-110;
+}
+
+@utility clickable-text {
+  @apply animate-def hover:text-main cursor-pointer;
+}
+
+@utility clickable-icon {
+  @apply animate-def hover:bg-main;
+}
+
+@layer base {
+  * {
+    @apply m-0 box-border p-0;
+  }
+
+  body {
+    @apply font-nunito min-h-lvh !bg-black text-[16px] text-white;
+  }
+
+  h2 {
+    @apply font-bold;
+  }
+
+  textarea {
+    @apply outline-none;
+  }
+
+  button {
+    @apply cursor-pointer disabled:pointer-events-none;
+  }
+
+  [data-rmiz-modal-overlay="visible"] {
+    @apply !bg-black;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-main rounded-[8px];
+  }
+
+  ::-webkit-scrollbar {
+    @apply h-[4px] w-[8px];
+  }
+
+  #squire_booking_widget_root {
+    @apply pointer-events-none absolute translate-x-[100%];
+  }
+
+  .dark-scroll::-webkit-scrollbar-thumb {
+    @apply bg-secondary-bright rounded-[8px];
+  }
+
+  .dark-scroll::-webkit-scrollbar-track {
+    @apply bg-bg-secondary rounded-[8px];
+  }
+
+  .dark-scroll-2::-webkit-scrollbar-track {
+    @apply bg-black;
+  }
+
+  .scroll-none::-webkit-scrollbar {
+    @apply w-0;
+  }
+
+  .scroll-none-tb::-webkit-scrollbar {
+    @apply max-tb:w-0;
+  }
+
+  .scroll-none-modal {
+    @apply max-640:pr-0;
+  }
+
+  .scroll-none-modal::-webkit-scrollbar {
+    @apply max-640:w-0;
+  }
+
+  .Toastify__toast {
+    @apply text-main !font-nunito bg-black;
+  }
+
+  .Toastify__progress-bar {
+    @apply !bg-main;
+  }
+  .Toastify__progress-bar--wrp {
+    @apply bg-secondary-dark;
+  }
+
+  .squire_widget {
+    @apply max-1208:right-[20px]! max-1208:bottom-[32px]! max-425:left-0 max-425:!bottom-0;
+  }
+
+  @keyframes opacity {
+    0% {
+      opacity: 0;
+      pointer-events: none;
+    }
+    100% {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  @keyframes mobile-modal-open {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto !max-w-[1208px] px-[16px];
+  }
+  .swiper-pagination-lock {
+    @apply !hidden;
+  }
+  .swiper-pagination-bullet {
+    @apply bg-secondary rounded-circle animate-def !m-0 h-[8px] w-[8px] cursor-pointer;
+  }
+  .swiper-pagination-bullet-active {
+    @apply bg-main h-[12px] w-[12px];
+  }
+}
