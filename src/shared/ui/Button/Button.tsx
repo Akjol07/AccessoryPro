@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/shared/helpers/helpers";
-import { ButtonUiType } from "@/shared/types/types";
 import {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
@@ -15,7 +14,8 @@ import Loader from "../Loader/Loader";
 interface Props
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     Pick<AnchorHTMLAttributes<HTMLAnchorElement>, "target"> {
-  uiType?: ButtonUiType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  uiType?: any;
   ref?: Ref<HTMLButtonElement>;
   element?: "button" | "a";
   href?: string;

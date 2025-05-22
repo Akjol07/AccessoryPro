@@ -16,7 +16,8 @@ export interface IGoogleLoginForm {
 
 export interface IRegisterUserResponse {
   token: { accessToken: string; refreshToken: string };
-  user: {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  user: any;
 }
 
 export interface IUser {
@@ -27,5 +28,6 @@ export interface IUser {
 
 export interface ILoginUserResponse {
   token: { accessToken: string; refreshToken: string };
-  user: {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  user: any;
 }
