@@ -10,7 +10,7 @@ import { IProduct } from "@/shared/types/types";
 
 interface Props extends IProduct {
   uiType?: "big";
-  busket?: boolean;
+  busket?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setBusket?: Dispatch<SetStateAction<any[]>>;
 }
@@ -39,13 +39,16 @@ const ProductCard: FC<Props> = ({ uiType, busket, setBusket, ...product }) => {
           })}
         />
         <div
-          className={cn("bg-bg-secondary px-[12px] pt-[12px] pb-[5px]", {
-            "max-tb:[background-image:_none] bg-[linear-gradient(180deg,#242424_0%,#181818_100%)]":
-              uiType === "big",
-          })}
+          className={cn(
+            "bg-bg-secondary h-[127px] px-[12px] pt-[12px] pb-[5px]",
+            {
+              "max-tb:[background-image:_none] bg-[linear-gradient(180deg,#242424_0%,#181818_100%)]":
+                uiType === "big",
+            },
+          )}
         >
           <div
-            className={cn("dark-scroll", {
+            className={cn("dark-scroll flex h-full flex-col justify-between", {
               "max-tb:overflow-hidden max-tb:h-fit h-[168px] overflow-y-auto pr-[12px]":
                 uiType === "big",
             })}
@@ -72,8 +75,14 @@ const ProductCard: FC<Props> = ({ uiType, busket, setBusket, ...product }) => {
                       (item) => item.id === product.id,
                     );
                     if (alreadyExists) {
-                      toast("Товар уже добавлен в корзину");
-                      return prev;
+                      toast("Товар удалён с корзины");
+                      localStorage.setItem(
+                        "busket",
+                        JSON.stringify(
+                          prev.filter((prd) => prd.id !== product.id) ?? [],
+                        ),
+                      );
+                      return prev.filter((prd) => prd.id !== product.id);
                     }
                     toast("Товар добавлен в корзину");
                     return [...prev, product];
@@ -81,7 +90,7 @@ const ProductCard: FC<Props> = ({ uiType, busket, setBusket, ...product }) => {
                 }
                 className="m-[10px_auto] block"
               >
-                save
+                {busket}
               </Button>
             )}
           </div>

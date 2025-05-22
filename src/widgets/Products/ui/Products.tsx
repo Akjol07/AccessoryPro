@@ -44,7 +44,7 @@ const Products: FC = () => {
           : products?.map((product, key) => (
               <ProductCard
                 key={key}
-                busket
+                busket={"Save"}
                 setBusket={setBuskets}
                 {...product}
               />

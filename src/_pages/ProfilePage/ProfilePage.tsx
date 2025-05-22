@@ -68,7 +68,12 @@ export default function ProfilePage() {
               <div>
                 <Slider name="prd" spaceBetween={10} slidesPerView="auto">
                   {products?.map((product, key) => (
-                    <ProductCard key={key} {...product} />
+                    <ProductCard
+                      key={key}
+                      setBusket={setProducts}
+                      busket={"Delete"}
+                      {...product}
+                    />
                   ))}
                 </Slider>
               </div>
